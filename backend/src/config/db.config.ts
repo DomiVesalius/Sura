@@ -17,7 +17,7 @@ const MONGO_OPTIONS = {
     retryWrites: false
 };
 
-const MONGO_PORT = parseInt(process.env.MONGO_PORT || '27017');
+const MONGO_PORT = parseInt(`${process.env.MONGO_PORT}` || '27017');
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
 const MONGO_DB_NAME = process.env.MONGO_DB_NAME || 'database';
 
