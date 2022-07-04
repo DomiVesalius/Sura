@@ -6,6 +6,7 @@ import sessionMiddleware from "./middlewares/session.middleware";
 import config from "./config/general.config";
 import authRouter from "./routes/auth.route";
 import logging from "./lib/logging";
+import errorsMiddleware from "./middlewares/errors.middleware";
 
 const NAMESPACE = 'Server';
 const server = express();
@@ -25,10 +26,7 @@ server.use(rulesMiddleware);
 server.use('/api', authRouter);
 
 // Error Handling
-server.use((req, res, next) => {
-    const error = new Error("Not Found");
-    return res.status(404).json({ message: error.message });
-})
+server.use(errorsMiddleware)
 
 server.listen(config.server.port, () => {
     logging.info(
