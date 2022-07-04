@@ -1,0 +1,38 @@
+#submit-image {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    border: var(--display-border);
+    border-radius: 2%;
+}
+
+#toggle-form {
+    width: fit-content;
+    margin: auto;
+}
+
+#add-image {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#submit-image-btn {
+    align-self: center;
+    width: 100%;
+}
+
+input[type="submit"] {
+    background-color: cadetblue;
+    color: white;
+    font-size: large;
+    height: 35px;
+    border-width: 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #78c4c7;
+    transition-duration: 0.5s;
+}
