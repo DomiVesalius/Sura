@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
 import multer from 'multer';
-import loggingMiddleware from "../middlewares/logging.middleware";
+import logging from "../lib/logging";
 dotenv.config();
 
 const NAMESPACE = "DatabaseConfig"
@@ -17,7 +17,7 @@ const MONGO_OPTIONS = {
     retryWrites: false
 };
 
-const MONGO_PORT = parseInt(`${process.env.MONGO_PORT}` || '27017');
+const MONGO_PORT = process.env.MONGO_PORT || 27017;
 const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
 const MONGO_DB_NAME = process.env.MONGO_DB_NAME || 'database';
 
@@ -29,7 +29,7 @@ const MONGO = {
 };
 
 mongoose.connect(MONGO.url, MONGO.options)
-    .then(result => loggingMiddleware.info(NAMESPACE, `Connected to Database @ ${MONGO_HOST}:${MONGO_PORT}`))
-    .catch(error => loggingMiddleware.error(NAMESPACE, error.message, error));
+    .then(result => logging.info(NAMESPACE, `Connected to Database @ ${MONGO_HOST}:${MONGO_PORT}`))
+    .catch(error => logging.error(NAMESPACE, error.message, error));
 
 export default MONGO;

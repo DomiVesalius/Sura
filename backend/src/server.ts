@@ -1,45 +1,25 @@
 import express from 'express';
 import bodyParser from "body-parser";
 import loggingMiddleware from "./middlewares/logging.middleware";
+import rulesMiddleware from "./middlewares/rules.middleware";
+import sessionMiddleware from "./middlewares/session.middleware";
 import config from "./config/general.config";
 import authRouter from "./routes/auth.route";
+import logging from "./lib/logging";
 
 const NAMESPACE = 'Server';
 const server = express();
 
 // Logging requests
-server.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-    loggingMiddleware.info(
-        NAMESPACE,
-        `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}]`
-    );
-
-    res.on('finish', () => {
-        loggingMiddleware.info(
-            NAMESPACE,
-            `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}], STATUS - [${res.statusCode}]`
-        );
-    });
-
-    next();
-});
+server.use(loggingMiddleware);
 
 // Parsing requests
 server.use(bodyParser.urlencoded( { extended: false }));
 server.use(bodyParser.json());
+server.use(sessionMiddleware);
 
 // API Rules
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'GET PATCH DELETE POST PUT');
-        return res.status(200).json();
-    }
-
-    next();
-});
+server.use(rulesMiddleware);
 
 // Routes
 server.use('/api', authRouter);
@@ -51,7 +31,7 @@ server.use((req, res, next) => {
 })
 
 server.listen(config.server.port, () => {
-    loggingMiddleware.info(
+    logging.info(
         NAMESPACE,
         `Server running on http://${config.server.hostname}:${config.server.port}`
     );

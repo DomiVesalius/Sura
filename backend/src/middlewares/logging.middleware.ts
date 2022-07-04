@@ -1,46 +1,21 @@
-import chalk from 'chalk';
+import { Request, Response, NextFunction, RequestHandler } from "express";
+import logging from "../lib/logging";
 
-function getTimeStamp(): string {
-    return new Date().toISOString();
+
+const loggingMiddleware: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
+    logging.info(
+        "Server",
+        `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}]`
+    );
+
+    res.on('finish', () => {
+        logging.info(
+            "Server",
+            `METHOD - [${req.method}], URL - [${req.url}], IP - [${req.socket.remoteAddress}], STATUS - [${res.statusCode}]`
+        );
+    });
+
+    next();
 }
-
-function info(namespace: string, message: string, object?: any): void {
-    if (object) {
-        console.info(chalk.blue(`[${getTimeStamp()}] [INFO] [${namespace}] ${message}`), object);
-    } else {
-        console.info(chalk.blue(`[${getTimeStamp()}] [INFO] [${namespace}] ${message}`));
-    }
-}
-
-function warn(namespace: string, message: string, object?: any): void {
-    if (object) {
-        console.warn(chalk.yellow(`[${getTimeStamp()}] [WARN] [${namespace}] ${message}`), object);
-    } else {
-        console.warn(chalk.yellow(`[${getTimeStamp()}] [WARN] [${namespace}] ${message}`));
-    }
-}
-
-function error(namespace: string, message: string, object?: any): void {
-    if (object) {
-        console.error(chalk.red(`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`), object);
-    } else {
-        console.error(chalk.red(`[${getTimeStamp()}] [ERROR] [${namespace}] ${message}`));
-    }
-}
-
-function debug(namespace: string, message: string, object?: any): void {
-    if (object) {
-        console.debug(`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`, object);
-    } else {
-        console.debug(`[${getTimeStamp()}] [DEBUG] [${namespace}] ${message}`);
-    }
-}
-
-const loggingMiddleware = {
-    info,
-    error,
-    debug,
-    warn
-};
 
 export default loggingMiddleware;
