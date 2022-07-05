@@ -60,4 +60,7 @@ export const login: RequestHandler = async (req: Request, res: Response, next: N
     });
 };
 
-export const logout: RequestHandler = (req: Request, res: Response, next: NextFunction) => {};
+export const logout: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
+    req.session.destroy();
+    return res.status(200).json({ 'message': 'Successfully logged out' });
+};
