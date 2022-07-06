@@ -2,7 +2,6 @@ import { Request, Response, NextFunction, RequestHandler } from 'express';
 import bcrypt from 'bcrypt';
 import User from "../models/user.model";
 import logging from "../lib/logging";
-import session from "express-session";
 
 const NAMESPACE = "Auth Controller";
 
