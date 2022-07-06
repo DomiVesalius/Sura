@@ -4,7 +4,7 @@ import loggingMiddleware from "./middlewares/logging.middleware";
 import rulesMiddleware from "./middlewares/rules.middleware";
 import sessionMiddleware from "./middlewares/session.middleware";
 import config from "./config/general.config";
-import authRouter from "./routes/auth.route";
+import authRouter from "./routes/auth.routes";
 import logging from "./lib/logging";
 import errorsMiddleware from "./middlewares/errors.middleware";
 
