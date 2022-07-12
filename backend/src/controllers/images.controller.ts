@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import User from "../models/user.model";
 import Image from "../models/image.model";
+import * as fs from "fs";
+import logging from "../lib/logging";
 
 const NAMESPACE = "Images Controller";
 
@@ -13,7 +15,7 @@ export const addImage: RequestHandler = async (req: Request, res: Response, next
     if (!postingUser) return res.status(400).json({ 'message': 'Account not found'});
 
     const postedImage = await new Image({
-        author: postingUser.get('id'),
+        author: username,
         title: req.body.title,
         file: req.file
     });
@@ -37,9 +39,16 @@ export const deleteImage: RequestHandler = async (req: Request, res: Response, n
 
     if (!imageToDelete) return res.status(404).json({ 'message': `Image with id '${imageId}' not found` });
 
-    if (imageToDelete.get('author') != user.get('id')) return res
+    if (imageToDelete.get('author') != user.get('username')) return res
         .status(403)
         .json({ 'message': `User '${username}' is not authorized to delete this image`});
+
+    try {
+        await fs.promises.unlink(imageToDelete.get('file').path);
+    } catch (err) {
+        logging.error(NAMESPACE, 'Unable to remove file', err);
+        return res.status(500).json({ 'message': 'Server could not unlink file' });
+    }
 
     await Image.deleteOne({ _id: imageId });
 
