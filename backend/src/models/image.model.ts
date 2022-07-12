@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const ImageSchema: Schema = new Schema(
     {
-        author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        author: { type: Schema.Types.String, ref: 'User', required: true },
         title: { type: Schema.Types.String, required: true },
         file: { type: Object, required: true }
     },
