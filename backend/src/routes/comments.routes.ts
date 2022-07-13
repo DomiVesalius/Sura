@@ -4,8 +4,8 @@ import { addComment, deleteComment, getComments } from "../controllers/comments.
 
 const commentsRouter = Router();
 
-commentsRouter.post('/images/comments', isAuthenticated, addComment);
-commentsRouter.get('/images/:imageId/comments/', isAuthenticated, getComments);
-commentsRouter.delete('/images/comments/:commentId', isAuthenticated, deleteComment);
+commentsRouter.post('/images/:imageId/comments', isAuthenticated, addComment);
+commentsRouter.get('/images/:imageId/comments', isAuthenticated, getComments);
+commentsRouter.delete('/images/:imageId/comments/:commentId', isAuthenticated, deleteComment);
 
 export default commentsRouter;
