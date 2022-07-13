@@ -1,6 +1,6 @@
 import { Router } from "express";
 import config from "../config/general.config";
-import {addImage, deleteImage, getImageWithId} from "../controllers/images.controller";
+import { addImage, deleteImage, getImageWithId } from "../controllers/images.controller";
 import { isAuthenticated } from "../middlewares/auth.middleware";
 
 const imagesRouter = Router();
