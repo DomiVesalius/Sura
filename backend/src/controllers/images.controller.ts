@@ -3,6 +3,7 @@ import User from "../models/user.model";
 import Image from "../models/image.model";
 import * as fs from "fs";
 import logging from "../lib/logging";
+import Comment from "../models/comment.model";
 
 const NAMESPACE = "Images Controller";
 
@@ -49,6 +50,8 @@ export const deleteImage: RequestHandler = async (req: Request, res: Response, n
         logging.error(NAMESPACE, 'Unable to remove file', err);
         return res.status(500).json({ 'message': 'Server could not unlink file' });
     }
+
+    Comment.deleteMany({ imageId: imageId });  // Deleting all comments belonging to this image
 
     await Image.deleteOne({ _id: imageId });
 
