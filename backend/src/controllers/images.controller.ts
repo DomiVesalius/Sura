@@ -56,3 +56,5 @@ export const deleteImage: RequestHandler = async (req: Request, res: Response, n
         .status(200)
         .json({ 'message': `Image '${imageToDelete.get('title')}' posted by ${username} has been deleted`});
 };
+
+export const getImageWithId: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {}
