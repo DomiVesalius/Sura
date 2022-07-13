@@ -3,9 +3,9 @@ import mongoose, { Schema } from 'mongoose';
 
 const CommentSchema: Schema = new Schema(
     {
-        author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-        title: { type: Schema.Types.String, required: true },
-        image: { type: Schema.Types.ObjectId, ref: 'Image' }
+        author: { type: Schema.Types.String, ref: 'User', required: true },
+        content: { type: Schema.Types.String, required: true },
+        imageId: { type: Schema.Types.ObjectId, ref: 'Image', required: true}
     },
     {
         timestamps: true
