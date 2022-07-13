@@ -8,6 +8,7 @@ import authRouter from "./routes/auth.routes";
 import logging from "./lib/logging";
 import errorsMiddleware from "./middlewares/errors.middleware";
 import imagesRouter from "./routes/images.routes";
+import commentsRouter from "./routes/comments.routes";
 
 const NAMESPACE = 'Server';
 const server = express();
@@ -26,6 +27,7 @@ server.use(rulesMiddleware);
 // Routes
 server.use('/api', authRouter);
 server.use('/api', imagesRouter);
+server.use('/api', commentsRouter);
 
 // Error Handling
 server.use(errorsMiddleware)
