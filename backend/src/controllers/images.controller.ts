@@ -68,7 +68,7 @@ export const getImageWithId: RequestHandler = async (req: Request, res: Response
     const fileOnly = req.query.file;
     if (fileOnly) {
         res.setHeader('Content-Type', image.get('file').mimetype);
-        console.log(__dirname, image.get('file').path)
+
         return res.status(200).sendFile(image.get('file').path, { root: './' });
     }
 
