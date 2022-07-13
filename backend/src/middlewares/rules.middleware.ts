@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction, RequestHandler } from "express";
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 
 const rulesMiddleware: RequestHandler = (req: Request, res: Response, next: NextFunction) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET PATCH DELETE POST PUT');
@@ -10,6 +10,6 @@ const rulesMiddleware: RequestHandler = (req: Request, res: Response, next: Next
     }
 
     next();
-}
+};
 
 export default rulesMiddleware;

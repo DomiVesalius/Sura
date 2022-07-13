@@ -1,4 +1,4 @@
-import IImage from "../interfaces/image.interface";
+import IImage from '../interfaces/image.interface';
 import mongoose, { Schema } from 'mongoose';
 
 const ImageSchema: Schema = new Schema(

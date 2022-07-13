@@ -2,6 +2,6 @@ import 'express';
 
 declare module 'express' {
     export interface Request {
-        session?: Session ;
+        session?: Session;
     }
 }

@@ -1,6 +1,6 @@
-import { Router } from "express";
-import { isAuthenticated } from "../middlewares/auth.middleware";
-import { addComment, deleteComment, getComments } from "../controllers/comments.controller";
+import { Router } from 'express';
+import { isAuthenticated } from '../middlewares/auth.middleware';
+import { addComment, deleteComment, getComments } from '../controllers/comments.controller';
 
 const commentsRouter = Router();
 
