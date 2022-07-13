@@ -40,7 +40,7 @@ export const deleteImage: RequestHandler = async (req: Request, res: Response, n
 
     if (!imageToDelete) return res.status(404).json({ 'message': `Image with id '${imageId}' not found` });
 
-    if (imageToDelete.get('author') != user.get('username')) return res
+    if (imageToDelete.get('author') != username) return res
         .status(403)
         .json({ 'message': `User '${username}' is not authorized to delete this image`});
 

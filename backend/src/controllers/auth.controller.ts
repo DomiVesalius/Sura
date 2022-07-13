@@ -53,8 +53,8 @@ export const login: RequestHandler = async (req: Request, res: Response, next: N
 
         if (!same) return res.status(401).json({ 'message': 'Incorrect password' });
 
-        // Saving the session and attaching cookie
-        req.session.username = userLogin.get('username');
+        // Saving the session
+        req.session.username = username;
         return res.status(200).json({ 'message': `Successfully logged in as '${req.session.username}'` });
     });
 };
