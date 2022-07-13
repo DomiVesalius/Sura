@@ -3,6 +3,7 @@ import User from "../models/user.model";
 import Image from "../models/image.model";
 import * as fs from "fs";
 import logging from "../lib/logging";
+import * as path from "path";
 
 const NAMESPACE = "Images Controller";
 
@@ -57,4 +58,20 @@ export const deleteImage: RequestHandler = async (req: Request, res: Response, n
         .json({ 'message': `Image '${imageToDelete.get('title')}' posted by ${username} has been deleted`});
 };
 
-export const getImageWithId: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {}
+export const getImageWithId: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+    if (!('username' in req.session)) return res.status(401).json({ 'message': 'User not logged in'});
+
+    const imageId = req.params.imageId;
+    const image = await Image.findOne({ _id: imageId });
+
+    if (!image) return res.status(404).json({ 'message': `Image with id '${imageId}' does not exist` });
+
+    const fileOnly = req.query.file;
+    if (fileOnly) {
+        res.setHeader('Content-Type', image.get('file').mimetype);
+        console.log(__dirname, image.get('file').path)
+        return res.status(200).sendFile(image.get('file').path, { root: './' });
+    }
+
+    return res.status(200).json(image);
+}
