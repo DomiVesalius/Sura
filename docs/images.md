@@ -16,3 +16,12 @@
 * Image being deleted must belong to the currently authenticated user
 * ``DELETE``
 * Route: ``/api/images/:imageId``
+
+## Getting an Image
+* Must be authenticated
+* Any authenticated user can retrieve any image
+* ``GET``
+* Route: ``/api/images/:imageId``
+  * Returns a JSON response containing the image object
+* Adding ``?file=true`` will return a file
+  * Example: ``/api/images/:imageId?file=true``
