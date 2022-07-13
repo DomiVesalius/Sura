@@ -3,7 +3,6 @@ import User from "../models/user.model";
 import Image from "../models/image.model";
 import * as fs from "fs";
 import logging from "../lib/logging";
-import * as path from "path";
 
 const NAMESPACE = "Images Controller";
 
