@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, RequestHandler } from 'express';
 import logging from '../lib/logging';
 import Image from '../models/image.model';
 import Comment from '../models/comment.model';
+import moment from "moment";
 
 const NAMESPACE = 'Comments Controller';
 
@@ -67,30 +68,33 @@ export const getComments: RequestHandler = async (req: Request, res: Response, n
     if (!image) return res.status(404).json({ message: `Image with id ${imageId} not found` });
 
     const limit = parseInt(`${req.query.limit}`) || 10; // Default of 10 if limit not provided
-    let next_item_date = req.query.next_item_date;
+    let nextItemDate = req.query.nextItemDate;
+
+    if (!moment(<string>nextItemDate, moment.ISO_8601, true).isValid())
+        return res.status(400).json({ 'message': 'nextItemDate query argument is invalid' });
 
     let comments;
-    if (!next_item_date) {
+    if (!nextItemDate) {
         comments = await Comment.find({ imageId: imageId })
             .sort('-createdAt') // Sort by most recent
             .limit(limit);
     } else {
         comments = await Comment.find({
             imageId: imageId,
-            createdAt: { $lt: next_item_date }
+            createdAt: { $lt: nextItemDate }
         })
             .sort('-createdAt')
             .limit(limit);
     }
 
     if (comments.length > 0) {
-        next_item_date = comments[comments.length - 1].get('createdAt');
+        nextItemDate = comments[comments.length - 1].get('createdAt');
     } else {
-        next_item_date = '';
+        nextItemDate = '';
     }
 
     return res.status(200).json({
         items: comments,
-        next_item_id: next_item_date
+        nextItemDate: nextItemDate
     });
 };
