@@ -40,7 +40,7 @@
 }
 ```
 * This uses cursor-based pagination
-* ``next_item_date`` can be used as a query argument to get the next list of comments
+* ``nextItemDate`` can be used as a query argument to get the next list of comments
 * Query Parameters:
   * ``limit``: The maximum length of the number of comments
     * If not provided, the default is 10
