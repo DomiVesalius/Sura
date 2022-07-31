@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
-interface CommentsProps {
+interface CommentSectionProps {
 
 }
 
-interface CommentsState {
+interface CommentSectionState {
 
 }
 
-class Comments extends Component<CommentsProps, CommentsState> {
+class CommentSection extends Component<CommentSectionProps, CommentSectionState> {
 
   render() {
-    return (<h2>Comments Component</h2>);
+    return (<h2>CommentSection Component</h2>);
   }
 }
 
-export default Comments;
+export default CommentSection;

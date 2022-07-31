@@ -11,7 +11,7 @@ interface ImageState {
 class AddImageForm extends Component<ImageProps, ImageState> {
 
   render() {
-    return (<h2>Comment Component</h2>);
+    return (<h2>Image Component</h2>);
   }
 }
 
