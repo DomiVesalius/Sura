@@ -7,7 +7,7 @@
     "build": "rm -rf build/ && prettier --write src/ && tsc",
     "dev": "nodemon src/server.ts",
     "start": "node src/server.ts",
-    "pretty": "prettier --write src/"
+    "format": "prettier --write src/"
   },
   "author": "Domi Vesalius",
   "license": "MIT",
