@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-interface AddImageProps {
+interface AddImageProps {}
 
-}
-
-interface AddImageState {
-
-}
+interface AddImageState {}
 
 class AddImageForm extends Component<AddImageProps, AddImageState> {
-
-  render() {
-    return (<h2>AddImageForm Component</h2>);
-  }
+    render() {
+        return <h2>AddImageForm Component</h2>;
+    }
 }
 
 export default AddImageForm;

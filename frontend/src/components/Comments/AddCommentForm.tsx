@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-interface AddCommentProps {
+interface AddCommentProps {}
 
-}
-
-interface AddCommentState {
-
-}
+interface AddCommentState {}
 
 class AddCommentForm extends Component<AddCommentProps, AddCommentState> {
-
-  render() {
-    return (<h2>AddCommentForm Component</h2>);
-  }
+    render() {
+        return <h2>AddCommentForm Component</h2>;
+    }
 }
 
 export default AddCommentForm;

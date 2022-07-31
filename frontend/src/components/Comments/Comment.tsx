@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-interface CommentProps {
+interface CommentProps {}
 
-}
-
-interface CommentState {
-
-}
+interface CommentState {}
 
 class Comment extends Component<CommentProps, CommentState> {
-
-  render() {
-    return (<h2>Comment Component</h2>);
-  }
+    render() {
+        return <h2>Comment Component</h2>;
+    }
 }
 
 export default Comment;
