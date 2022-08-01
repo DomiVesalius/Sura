@@ -21,7 +21,9 @@ Login
 
 ### App
 * **Image**: The area which will display the current image
+* **ImageCarousel**: A carousel of images
 * **Gallery**: Each user has their own gallery of photos that only they can upload images to
+* **GalleryCarousel**: A carousel of galleries
 * **AddImageForm**: A form that allows users to upload an image
 * **Comment**: A users comment on an image in a certain gallery
 * **CommentSection**: A section containing a paginated list of comments for a specific image
@@ -32,13 +34,14 @@ Login
 ```
 App
 |-- Logout
-|-- Gallery
-    |-- Image
-        |-- AddCommentForm
-        |-- CommentSection
-            |-- Comment
-            |-- Comment
-            [...]
-            |-- Comment
-    |-- AddImageForm
+|-- GalleryCarousel
+    |-- Gallery
+        |-- Image
+            |-- AddCommentForm
+            |-- CommentSection
+                |-- Comment
+                |-- Comment
+                [...]
+                |-- Comment
+        |-- AddImageForm
 ```
