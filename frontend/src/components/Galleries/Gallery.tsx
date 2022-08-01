@@ -6,7 +6,7 @@ interface GalleryState {}
 
 class Gallery extends Component<GalleryProps, GalleryState> {
     render() {
-        return <h2>Gallery Component</h2>;
+        return (<h1>Gallery</h1>);
     }
 }
 
