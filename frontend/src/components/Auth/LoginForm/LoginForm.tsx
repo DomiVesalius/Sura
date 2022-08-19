@@ -9,17 +9,16 @@ interface LoginState {
 }
 
 class LoginForm extends Component<LoginProps, LoginState> {
-
     state: LoginState = {
-        username: "",
-        password: ""
-    }
+        username: '',
+        password: ''
+    };
 
     render() {
         return (
             <div>
                 <form id="login-form">
-                    <Stack spacing={2} maxWidth={0.2} >
+                    <Stack spacing={2} maxWidth={0.2}>
                         <TextField label="Username" required />
                         <TextField label="Password" required />
                         <Button variant="contained">Login</Button>
