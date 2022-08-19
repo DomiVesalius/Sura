@@ -108,6 +108,4 @@ dist
 .idea
 
 # Misc
-old/db
-old/uploads
 uploads/
