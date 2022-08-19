@@ -1,4 +1,4 @@
-# Sura - The Web Gallery
+# Sura
 ## Description
 Sura is an image sharing web application, similar to Instagram, that allows users to register and upload images to their
 own gallery as well as comment on the images found within others galleries.
