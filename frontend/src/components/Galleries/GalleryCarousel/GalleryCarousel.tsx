@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface GalleryCarouselProps {}
 
-interface GalleryCarouselState {}
-
-class GalleryCarousel extends Component<GalleryCarouselProps, GalleryCarouselState> {
-    render() {
-        return <h1>Gallery Carousel</h1>;
-    }
-}
+const GalleryCarousel: React.FC<GalleryCarouselProps> = () => {
+    return <h1>GalleryCarousel Component</h1>;
+};
 
 export default GalleryCarousel;

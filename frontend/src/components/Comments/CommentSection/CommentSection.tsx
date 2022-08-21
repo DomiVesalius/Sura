@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface CommentSectionProps {}
 
-interface CommentSectionState {}
-
-class CommentSection extends Component<CommentSectionProps, CommentSectionState> {
-    render() {
-        return <h2>CommentSection Component</h2>;
-    }
-}
+const CommentSection: React.FC<CommentSectionProps> = () => {
+    return <h2>CommentSection Component</h2>;
+};
 
 export default CommentSection;

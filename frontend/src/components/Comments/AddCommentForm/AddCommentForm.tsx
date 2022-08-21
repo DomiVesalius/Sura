@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface AddCommentProps {}
 
-interface AddCommentState {}
-
-class AddCommentForm extends Component<AddCommentProps, AddCommentState> {
-    render() {
-        return <h2>AddCommentForm Component</h2>;
-    }
-}
+const AddCommentForm: React.FC<AddCommentProps> = () => {
+    return <h2>AddCommentForm Component</h2>;
+};
 
 export default AddCommentForm;

@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface GalleryProps {}
 
-interface GalleryState {}
-
-class Gallery extends Component<GalleryProps, GalleryState> {
-    render() {
-        return <h1>Gallery</h1>;
-    }
-}
+const Gallery: React.FC<GalleryProps> = () => {
+    return <h1>Gallery Component</h1>;
+};
 
 export default Gallery;
